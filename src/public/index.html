@@ -31,49 +31,45 @@
       </div>
     </div>
 
-
     <div class="container" id="content-wrap">
       <div class="row">
         <div class="col-md-7 mt-5">
           <div class="card">
-
             <div class="card-header">
               <h4>Chat Area</h4>
             </div>
-            <div class="card-body" id="chat">
+            <div class="card-body" id="chat"></div>
 
-
-            </div>
             <form id="message-form" class="card-footer">
               <div class="input-group">
-                <input class="form-control" type="text" id="message">
+                <input class="form-control" type="text" id="message" />
                 <div class="input-group-append">
                   <button class="btn btn-success" type="submit">Enviar</button>
                 </div>
               </div>
             </form>
 
-
+            
           </div>
         </div>
         <div class="col-md-4 mt-5">
           <div class="card">
-
             <div class="card-header">
               <h4>En Línea</h4>
-
             </div>
             <div class="card-body">
               <div id="usernames"></div>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
 
-
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
     <script src="./js/main.js"></script>
   </body>
