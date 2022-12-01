@@ -1,6 +1,6 @@
 module.exports = (io) => {
-    //En lugar de un arreglo se puede sustituir por una base de datos
-    let nickNames=[];
+  //En lugar de un arreglo se puede sustituir por una base de datos
+  let nickNames = [];
   io.on("connection", (socket) => {
     console.log("Nuevo usuario conectado");
 
@@ -13,20 +13,17 @@ module.exports = (io) => {
     });
 
     socket.on("nuevo usuario", (datos, callback) => {
-        console.log("anda por aca")
-        if(nickNames.indexOf(datos)!=-1){
-            callback(false);
+      console.log("anda por aca");
+      if (nickNames.indexOf(datos) != -1) {
+        callback(false);
+      } else {
+        callback(true);
+        socket.nickname = datos;
 
-        }else{
-            callback(true);
-            socket.nickname=datos;
+        nickNames.push(socket.nickname);
 
-            nickNames.push(socket.nickname);
-
-            io.sockets.emit("usernames", nickNames);
-
-        }
-
+        io.sockets.emit("usernames", nickNames);
+      }
     });
   });
 };

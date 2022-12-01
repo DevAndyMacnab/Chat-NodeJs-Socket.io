@@ -43,6 +43,22 @@ $(function () {
       nickName.val("");
     });
   });
-});
 
-//Obtenemos respuesta del servidor
+  //Obtenemos el array de usuario conectados
+  socket.on("usernames", (datos) => {
+    let html = "";
+    let color = "";
+    let salir = "";
+    for (let i = 0; i < datos.length; i++) {
+      if (nick == datos[i]) {
+        color = "#027f43";
+        salir = '<a class="enlace-salir" href="/">Salir</a>';
+      } else {
+        color = "#000";
+        salir = "";
+      }
+      html += `<p style="color: ${color};">${datos[i]} ${salir}</p>`;
+    }
+    usernames.html(html);
+  });
+});
