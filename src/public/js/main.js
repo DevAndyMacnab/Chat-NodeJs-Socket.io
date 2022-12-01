@@ -20,15 +20,20 @@ $(function () {
   });
 
   socket.on("nuevo mensaje", function (datos) {
+    let color = "#f4f4f4";
+
+    if (nick == datos.usernames) {
+      color = "#9ff4c5";
+    }
     chat.append(
-      `<div class="msg-area mb-2"><p class="msg">${datos.msg}</p></div>`
+      `<div class="msg-area mb-2" style="background-color:${color}"><p class="msg"><b>${datos.usernames} </b> <br>${datos.msg}</p></div>`
     );
   });
 
   //Nuevo usuario:
   nickForm.submit((evento) => {
     evento.preventDefault();
-    console.log("si funciona");
+    
     socket.emit("nuevo usuario", nickName.val(), (datos) => {
       if (datos) {
         nick = nickName.val();
@@ -39,7 +44,7 @@ $(function () {
           '<div class="alert alert-danger">El usuario ya existe</div>'
         );
       }
-      console.log("Llegamos por aqui");
+      
       nickName.val("");
     });
   });
